@@ -1,29 +1,77 @@
 {
   "expo": {
-    "name": "FocusLife",
-    "slug": "FocusLife",
-    "version": "1.0.0",
+    "name": "FocusLife - Hábitos & Enfoque",
+    "slug": "focuslife",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#7C3AED"
+    },
+    "androidStatusBar": {
+      "translucent": true,
+      "backgroundColor": "transparent"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.focuslife.app",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "Esta información se usará para mostrarte anuncios personalizados."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#7C3AED"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "versionCode": 2,
+      "package": "com.focuslife.app",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "SCHEDULE_EXACT_ALARM",
+        "com.android.vending.BILLING"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "sounds": [],
+          "icon": "./assets/notification-icon.png",
+          "color": "#7C3AED"
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-4638960090268476~7202887221",
+          "iosAppId": "ca-app-pub-4638960090268476~7202887221"
+        }
+      ],
+      ["expo-splash-screen", {
+        "backgroundColor": "#7C3AED",
+        "image": "./assets/splash.png",
+        "resizeMode": "cover"
+      }],
+      "@react-native-firebase/app",
+      "@react-native-google-signin/google-signin",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f39da6b6-2ecb-44b5-a441-cabf4ed1cc8e"
+      }
+    },
+    "owner": "kay-nicte"
   }
 }

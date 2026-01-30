@@ -13,10 +13,20 @@ expo-env.d.ts
 .kotlin/
 *.orig.*
 *.jks
+*.keystore
 *.p8
 *.p12
 *.key
 *.mobileprovision
+
+# Credentials
+credentials.json
+google-services.json
+
+# Misc
+nul
+GUIA_MONETIZACION.md
+.claude/
 
 # Metro
 .metro-health-check*
