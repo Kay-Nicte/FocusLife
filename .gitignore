@@ -21,7 +21,6 @@ expo-env.d.ts
 
 # Credentials
 credentials.json
-google-services.json
 
 # Misc
 nul

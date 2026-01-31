@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "12535374011",
+    "project_id": "focuslife-c5bd2",
+    "storage_bucket": "focuslife-c5bd2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12535374011:android:99e5ae288592871630499e",
+        "android_client_info": {
+          "package_name": "com.focuslife.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12535374011-00mso74es7lu1d1j5fjqrr0dt53n405f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.focuslife.app",
+            "certificate_hash": "f87bedf06aae988aa331857e32f7a4f0ce16ab70"
+          }
+        },
+        {
+          "client_id": "12535374011-vqne20535365747l4ja6m4nrlg7trkva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlG2y5m9-xAoQJ8PWQEdUQ6VoU2CBxYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12535374011-vqne20535365747l4ja6m4nrlg7trkva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
