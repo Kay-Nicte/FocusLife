@@ -57,6 +57,10 @@ export default {
     createAccount: 'Crear conta',
     continueWithGoogle: 'Continuar con Google',
     continueWithEmail: 'Continuar con Email',
+    forgotPassword: 'Esqueciches o contrasinal?',
+    enterEmailForReset: 'Escribe o teu email arriba para recuperar o contrasinal',
+    resetSent: 'Correo enviado',
+    resetSentMessage: 'Se existe unha conta con ese email, recibirás unha ligazón para restablecer o teu contrasinal.',
     terms: 'Ao continuar, aceptas os termos de uso e a política de privacidade.',
   },
 

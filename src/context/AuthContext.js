@@ -96,6 +96,22 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  const resetPassword = useCallback(async (email) => {
+    try {
+      setAuthError(null);
+      await auth().sendPasswordResetEmail(email);
+    } catch (error) {
+      console.warn('Password reset error:', error);
+      let message = 'Error al enviar el correo de recuperación';
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        message = 'No existe una cuenta con este email';
+      }
+      if (error.code === 'auth/invalid-email') message = 'Email inválido';
+      setAuthError(message);
+      throw error;
+    }
+  }, []);
+
   const signOut = useCallback(async () => {
     try {
       setAuthError(null);
@@ -134,6 +150,7 @@ export function AuthProvider({ children }) {
     signInWithEmail,
     signInAnonymously,
     signOut,
+    resetPassword,
     registerSignOutCallback,
   };
 

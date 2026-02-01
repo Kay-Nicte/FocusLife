@@ -57,6 +57,10 @@ export default {
     createAccount: 'Crear cuenta',
     continueWithGoogle: 'Continuar con Google',
     continueWithEmail: 'Continuar con Email',
+    forgotPassword: '¿Olvidaste tu contraseña?',
+    enterEmailForReset: 'Escribe tu email arriba para recuperar la contraseña',
+    resetSent: 'Correo enviado',
+    resetSentMessage: 'Si existe una cuenta con ese email, recibirás un enlace para restablecer tu contraseña.',
     terms: 'Al continuar, aceptas los términos de uso y la política de privacidad.',
   },
 

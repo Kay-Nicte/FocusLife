@@ -36,6 +36,27 @@ export default function TimerScreen({ navigation }) {
     settingsRef.current = settings;
   }, [settings]);
 
+  // Handle app going to background and coming back
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (nextAppState === 'active' && isRunning && startTimeRef.current) {
+        // App came back to foreground — recalculate time based on real elapsed time
+        const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+        const totalDur = getDuration();
+        const remaining = totalDur - elapsedSeconds;
+        if (remaining <= 0) {
+          // Timer should have completed while in background
+          setTimeLeft(0);
+          clearInterval(intervalRef.current);
+          handleTimerComplete();
+        } else {
+          setTimeLeft(remaining);
+        }
+      }
+    });
+    return () => subscription.remove();
+  }, [isRunning, mode]);
+
   const MODES = useMemo(() => [
     { key: 'focus', label: t('timer.focus'), color: colors.primary, icon: 'flash' },
     { key: 'short', label: t('timer.shortBreak'), color: colors.accent, icon: 'cafe' },

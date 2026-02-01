@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "12535374011-isb2b7e2grm62h5nqtdf03neqnvfkv9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.focuslife.app",
+            "certificate_hash": "59f3e4121b61893933ea650c8893fb00ee3174a7"
+          }
+        },
+        {
           "client_id": "12535374011-vqne20535365747l4ja6m4nrlg7trkva.apps.googleusercontent.com",
           "client_type": 3
         }

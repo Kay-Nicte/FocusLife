@@ -57,6 +57,10 @@ export default {
     createAccount: 'Kontua sortu',
     continueWithGoogle: 'Jarraitu Google-rekin',
     continueWithEmail: 'Jarraitu Emailarekin',
+    forgotPassword: 'Pasahitza ahaztu duzu?',
+    enterEmailForReset: 'Idatzi zure emaila goian pasahitza berrezartzeko',
+    resetSent: 'Emaila bidalita',
+    resetSentMessage: 'Email horrekin kontua badago, pasahitza berrezartzeko esteka jasoko duzu.',
     terms: 'Jarraitzeko, erabilera-baldintzak eta pribatutasun-politika onartzen dituzu.',
   },
 

@@ -14,7 +14,7 @@ import GradientBackground from '../components/GradientBackground';
 export default function AuthScreen() {
   const { colors } = useTheme();
   const styles = useStyles(colors);
-  const { signInWithGoogle, signInWithEmail, authError } = useAuth();
+  const { signInWithGoogle, signInWithEmail, resetPassword, authError } = useAuth();
   const { t } = useLanguage();
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
@@ -30,6 +30,19 @@ export default function AuthScreen() {
       // Error already handled in AuthContext
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (!email.trim()) {
+      Alert.alert(t('common.error'), t('auth.enterEmailForReset'));
+      return;
+    }
+    try {
+      await resetPassword(email.trim());
+      Alert.alert(t('auth.resetSent'), t('auth.resetSentMessage'));
+    } catch (e) {
+      // Error already handled in AuthContext
     }
   };
 
@@ -114,6 +127,12 @@ export default function AuthScreen() {
               onChangeText={setPassword}
               secureTextEntry
             />
+
+            {!isRegistering && (
+              <TouchableOpacity onPress={handleResetPassword}>
+                <Text style={styles.forgotText}>{t('auth.forgotPassword')}</Text>
+              </TouchableOpacity>
+            )}
 
             {authError && (
               <Text style={styles.errorText}>{authError}</Text>
@@ -303,6 +322,11 @@ const useStyles = (COLORS) => useMemo(() => StyleSheet.create({
     fontSize: SIZES.md,
     color: COLORS.textSecondary,
     fontWeight: '600',
+  },
+  forgotText: {
+    fontSize: SIZES.sm,
+    color: COLORS.primary,
+    textAlign: 'right',
   },
   errorText: {
     fontSize: SIZES.sm,

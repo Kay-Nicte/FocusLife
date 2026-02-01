@@ -57,6 +57,10 @@ export default {
     createAccount: 'Créer un compte',
     continueWithGoogle: 'Continuer avec Google',
     continueWithEmail: 'Continuer avec Email',
+    forgotPassword: 'Mot de passe oublié ?',
+    enterEmailForReset: 'Entrez votre email ci-dessus pour réinitialiser votre mot de passe',
+    resetSent: 'Email envoyé',
+    resetSentMessage: 'Si un compte existe avec cet email, vous recevrez un lien pour réinitialiser votre mot de passe.',
     terms: "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité.",
   },
 

@@ -57,7 +57,11 @@ export default {
     createAccount: 'Crear compte',
     continueWithGoogle: 'Continuar amb Google',
     continueWithEmail: 'Continuar amb Email',
-    terms: 'En continuar, acceptes els termes d’ús i la política de privacitat.',
+    forgotPassword: 'Has oblidat la contrasenya?',
+    enterEmailForReset: 'Escriu el teu email a dalt per recuperar la contrasenya',
+    resetSent: 'Correu enviat',
+    resetSentMessage: 'Si existeix un compte amb aquest email, rebràs un enllaç per restablir la contrasenya.',
+    terms: "En continuar, acceptes els termes d'ús i la política de privacitat.",
   },
 
   // Habits Screen

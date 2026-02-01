@@ -57,6 +57,10 @@ export default {
     createAccount: 'Criar conta',
     continueWithGoogle: 'Continuar com Google',
     continueWithEmail: 'Continuar com Email',
+    forgotPassword: 'Esqueceu a senha?',
+    enterEmailForReset: 'Digite seu email acima para redefinir sua senha',
+    resetSent: 'Email enviado',
+    resetSentMessage: 'Se existir uma conta com esse email, você receberá um link para redefinir sua senha.',
     terms: 'Ao continuar, você aceita os termos de uso e a política de privacidade.',
   },
 
