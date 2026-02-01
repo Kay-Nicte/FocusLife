@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "12535374011-00mso74es7lu1d1j5fjqrr0dt53n405f.apps.googleusercontent.com",
+          "client_id": "12535374011-ha5lsoumi2qpf5k6bmkv87go5j65ihnm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.focuslife.app",
-            "certificate_hash": "f87bedf06aae988aa331857e32f7a4f0ce16ab70"
+            "certificate_hash": "942288fc21252b951485648d2d963f324590550e"
           }
         },
         {

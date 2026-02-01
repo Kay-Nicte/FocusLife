@@ -134,11 +134,20 @@ export default function TimerScreen({ navigation }) {
       startTimeRef.current = Date.now();
       const isBreak = mode !== 0;
       if (settingsRef.current.timerNotification) {
-        await scheduleTimerNotification(timeLeft, isBreak);
+        try {
+          await scheduleTimerNotification(timeLeft, isBreak);
+        } catch (e) {
+          // Don't block timer start if notification scheduling fails
+          console.warn('Timer notification failed:', e.message);
+        }
       }
     } else {
       // Pausing timer - cancel scheduled notification
-      await cancelTimerNotification();
+      try {
+        await cancelTimerNotification();
+      } catch (e) {
+        console.warn('Cancel notification failed:', e.message);
+      }
     }
     setIsRunning(!isRunning);
   };

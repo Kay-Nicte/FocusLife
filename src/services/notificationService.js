@@ -52,19 +52,17 @@ export const scheduleDailyReminder = async (hour, minute) => {
   // Cancel existing daily reminder first
   await cancelDailyReminder();
 
-  const trigger = {
-    hour,
-    minute,
-    repeats: true,
-  };
-
   await Notifications.scheduleNotificationAsync({
     content: {
       title: t('notifications.dailyTitle'),
       body: t('notifications.dailyBody'),
       sound: true,
     },
-    trigger,
+    trigger: {
+      type: 'daily',
+      hour,
+      minute,
+    },
     identifier: NOTIFICATION_IDS.DAILY_REMINDER,
   });
 };
@@ -80,19 +78,17 @@ export const scheduleStreakWarning = async () => {
   await cancelStreakWarning();
 
   // Schedule for 20:00 every day
-  const trigger = {
-    hour: 20,
-    minute: 0,
-    repeats: true,
-  };
-
   await Notifications.scheduleNotificationAsync({
     content: {
       title: t('notifications.streakTitle'),
       body: t('notifications.streakBody'),
       sound: true,
     },
-    trigger,
+    trigger: {
+      type: 'daily',
+      hour: 20,
+      minute: 0,
+    },
     identifier: NOTIFICATION_IDS.STREAK_WARNING,
   });
 };
@@ -129,7 +125,9 @@ export const scheduleTimerNotification = async (seconds, isBreak = false) => {
       sound: true,
     },
     trigger: {
+      type: 'timeInterval',
       seconds,
+      repeats: false,
     },
     identifier: NOTIFICATION_IDS.TIMER_COMPLETE,
   });
