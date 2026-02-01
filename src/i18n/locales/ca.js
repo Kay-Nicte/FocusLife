@@ -214,6 +214,16 @@ export default {
     nameModalSubtitle: 'Aquest nom apareixerà a la salutació inicial',
     namePlaceholder: 'Ex: Maria, Carles...',
 
+    redeemCode: 'Bescanviar codi',
+    redeemCodeDesc: 'Introdueix un codi promocional',
+    redeemCodeTitle: 'Bescanviar codi',
+    redeemCodePlaceholder: 'Introdueix el teu codi',
+    redeem: 'Bescanviar',
+    invalidCode: 'Codi no vàlid',
+    invalidCodeMessage: 'El codi introduït no és vàlid.',
+    codeRedeemed: 'Codi bescanviat',
+    codeRedeemedMessage: "Premium s'ha activat correctament.",
+
     version: 'FocusLife v1.0.1',
     madeWith: 'Fet amb dedicació',
   },

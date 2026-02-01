@@ -222,6 +222,17 @@ export default {
     nameModalSubtitle: 'Este nombre aparecerá en el saludo de inicio',
     namePlaceholder: 'Ej: María, Carlos...',
 
+    // Promo Code
+    redeemCode: 'Canjear código',
+    redeemCodeDesc: 'Introduce un código promocional',
+    redeemCodeTitle: 'Canjear código',
+    redeemCodePlaceholder: 'Introduce tu código',
+    redeem: 'Canjear',
+    invalidCode: 'Código no válido',
+    invalidCodeMessage: 'El código introducido no es válido.',
+    codeRedeemed: 'Código canjeado',
+    codeRedeemedMessage: 'Premium se ha activado correctamente.',
+
     // Version
     version: 'FocusLife v1.0.1',
     madeWith: 'Hecho con dedicación',

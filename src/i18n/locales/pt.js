@@ -222,6 +222,17 @@ export default {
     nameModalSubtitle: 'Este nome aparecerá na saudação',
     namePlaceholder: 'Ex: Maria, João...',
 
+    // Promo Code
+    redeemCode: 'Resgatar código',
+    redeemCodeDesc: 'Insira um código promocional',
+    redeemCodeTitle: 'Resgatar código',
+    redeemCodePlaceholder: 'Insira seu código',
+    redeem: 'Resgatar',
+    invalidCode: 'Código inválido',
+    invalidCodeMessage: 'O código inserido não é válido.',
+    codeRedeemed: 'Código resgatado',
+    codeRedeemedMessage: 'Premium foi ativado com sucesso.',
+
     // Version
     version: 'FocusLife v1.0.1',
     madeWith: 'Feito com dedicação',

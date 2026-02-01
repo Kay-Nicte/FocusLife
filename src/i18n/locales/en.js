@@ -222,6 +222,17 @@ export default {
     nameModalSubtitle: 'This name will appear in the greeting',
     namePlaceholder: 'E.g.: Mary, John...',
 
+    // Promo Code
+    redeemCode: 'Redeem code',
+    redeemCodeDesc: 'Enter a promotional code',
+    redeemCodeTitle: 'Redeem code',
+    redeemCodePlaceholder: 'Enter your code',
+    redeem: 'Redeem',
+    invalidCode: 'Invalid code',
+    invalidCodeMessage: 'The code you entered is not valid.',
+    codeRedeemed: 'Code redeemed',
+    codeRedeemedMessage: 'Premium has been activated successfully.',
+
     // Version
     version: 'FocusLife v1.0.1',
     madeWith: 'Made with dedication',

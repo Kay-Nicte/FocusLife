@@ -30,6 +30,7 @@ export default function TimerScreen({ navigation }) {
   const intervalRef = useRef(null);
   const startTimeRef = useRef(null);
   const settingsRef = useRef(settings);
+  const handleTimerCompleteRef = useRef(null);
 
   // Keep settingsRef updated
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function TimerScreen({ navigation }) {
           // Timer should have completed while in background
           setTimeLeft(0);
           clearInterval(intervalRef.current);
-          handleTimerComplete();
+          if (handleTimerCompleteRef.current) handleTimerCompleteRef.current();
         } else {
           setTimeLeft(remaining);
         }
@@ -86,7 +87,11 @@ export default function TimerScreen({ navigation }) {
         setTimeLeft(prev => {
           if (prev <= 1) {
             clearInterval(intervalRef.current);
-            handleTimerComplete();
+            // Call handleTimerComplete outside the state updater via setTimeout
+            // to ensure side effects (saving session) execute properly
+            setTimeout(() => {
+              if (handleTimerCompleteRef.current) handleTimerCompleteRef.current();
+            }, 0);
             return 0;
           }
           return prev - 1;
@@ -148,6 +153,9 @@ export default function TimerScreen({ navigation }) {
       setMode(0);
     }
   };
+
+  // Keep ref updated so interval/AppState always call the latest version
+  handleTimerCompleteRef.current = handleTimerComplete;
 
   const toggleTimer = async () => {
     if (!isRunning) {

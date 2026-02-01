@@ -21,11 +21,13 @@ import {
 export default function SettingsScreen({ navigation }) {
   const { colors, isDark } = useTheme();
   const styles = useStyles(colors);
-  const { settings, updateSettings, isPremium, syncing, lastSync, username, updateUsername, reload } = useApp();
+  const { settings, updateSettings, isPremium, upgradeToPremium, syncing, lastSync, username, updateUsername, reload } = useApp();
   const { user, isAnonymous, signOut, signInWithGoogle } = useAuth();
   const { t, currentLanguage, changeLanguage, languages } = useLanguage();
   const [showNameModal, setShowNameModal] = useState(false);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const [showPromoModal, setShowPromoModal] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
   const [tempName, setTempName] = useState(username);
   const [showTimePicker, setShowTimePicker] = useState(false);
 
@@ -83,6 +85,20 @@ export default function SettingsScreen({ navigation }) {
   const handleSaveName = () => {
     updateUsername(tempName.trim());
     setShowNameModal(false);
+  };
+
+  const VALID_PROMO_CODES = ['FOCUSLIFEVIP', 'FOCUSLIFEREVIEW'];
+
+  const handleRedeemCode = async () => {
+    const code = promoCode.trim().toUpperCase();
+    if (VALID_PROMO_CODES.includes(code)) {
+      await upgradeToPremium();
+      setShowPromoModal(false);
+      setPromoCode('');
+      Alert.alert(t('settings.codeRedeemed'), t('settings.codeRedeemedMessage'));
+    } else {
+      Alert.alert(t('settings.invalidCode'), t('settings.invalidCodeMessage'));
+    }
   };
 
   const handleCancelPremium = () => {
@@ -188,9 +204,16 @@ export default function SettingsScreen({ navigation }) {
           </View>
           {!isPremium && <Ionicons name="chevron-forward" size={20} color={colors.textSecondary} />}
         </TouchableOpacity>
-        {isPremium && (
+        {isPremium ? (
           <TouchableOpacity style={styles.cancelPremiumButton} onPress={handleCancelPremium}>
             <Text style={styles.cancelPremiumText}>{t('settings.cancelSubscription')}</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.cancelPremiumButton}
+            onPress={() => { setPromoCode(''); setShowPromoModal(true); }}
+          >
+            <Text style={[styles.cancelPremiumText, { color: colors.primary }]}>{t('settings.redeemCode')}</Text>
           </TouchableOpacity>
         )}
 
@@ -520,6 +543,47 @@ export default function SettingsScreen({ navigation }) {
             >
               <Text style={styles.modalButtonTextCancel}>{t('common.cancel')}</Text>
             </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Promo Code Modal */}
+      <Modal
+        visible={showPromoModal}
+        animationType="fade"
+        transparent
+        onRequestClose={() => setShowPromoModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>{t('settings.redeemCodeTitle')}</Text>
+            <Text style={styles.modalSubtitle}>
+              {t('settings.redeemCodeDesc')}
+            </Text>
+            <TextInput
+              style={styles.nameInput}
+              placeholder={t('settings.redeemCodePlaceholder')}
+              placeholderTextColor={colors.textMuted}
+              value={promoCode}
+              onChangeText={setPromoCode}
+              autoCapitalize="characters"
+              autoCorrect={false}
+              autoFocus
+            />
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.modalButtonCancel]}
+                onPress={() => setShowPromoModal(false)}
+              >
+                <Text style={styles.modalButtonTextCancel}>{t('common.cancel')}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.modalButtonSave]}
+                onPress={handleRedeemCode}
+              >
+                <Text style={styles.modalButtonTextSave}>{t('settings.redeem')}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>

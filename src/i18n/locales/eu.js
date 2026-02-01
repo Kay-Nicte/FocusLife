@@ -214,6 +214,16 @@ export default {
     nameModalSubtitle: 'Izen hau hasierako agurrean agertuko da',
     namePlaceholder: 'Adib.: Maria, Karlos...',
 
+    redeemCode: 'Kodea trukatu',
+    redeemCodeDesc: 'Sartu promozio kode bat',
+    redeemCodeTitle: 'Kodea trukatu',
+    redeemCodePlaceholder: 'Sartu zure kodea',
+    redeem: 'Trukatu',
+    invalidCode: 'Kode baliogabea',
+    invalidCodeMessage: 'Sartutako kodea ez da baliozkoa.',
+    codeRedeemed: 'Kodea trukatuta',
+    codeRedeemedMessage: 'Premium behar bezala aktibatu da.',
+
     version: 'FocusLife v1.0.1',
     madeWith: 'Arretaz egina',
   },
