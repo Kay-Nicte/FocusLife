@@ -34,7 +34,7 @@ export default function HabitsScreen({ navigation }) {
 
   const MAX_BONUS_HABITS = 1; // Only 1 extra habit via ads
   const canAddHabit = isPremium || habits.length < (FREE_HABIT_LIMIT + bonusHabits);
-  const canWatchAdForBonus = bonusHabits < MAX_BONUS_HABITS;
+  const canWatchAdForBonus = bonusHabits < MAX_BONUS_HABITS && habits.length < (FREE_HABIT_LIMIT + MAX_BONUS_HABITS);
 
   const resetModal = () => {
     setNewHabitName('');

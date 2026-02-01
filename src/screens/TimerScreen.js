@@ -45,13 +45,14 @@ export default function TimerScreen({ navigation }) {
   const currentMode = MODES[mode];
 
   const getDuration = useCallback(() => {
+    const s = settingsRef.current;
     switch (mode) {
-      case 0: return settings.pomodoroDuration * 60;
-      case 1: return settings.shortBreak * 60;
-      case 2: return settings.longBreak * 60;
-      default: return settings.pomodoroDuration * 60;
+      case 0: return s.pomodoroDuration * 60;
+      case 1: return s.shortBreak * 60;
+      case 2: return s.longBreak * 60;
+      default: return s.pomodoroDuration * 60;
     }
-  }, [mode, settings]);
+  }, [mode]);
 
   useEffect(() => {
     setTimeLeft(getDuration());
