@@ -118,10 +118,6 @@ export const scheduleTimerNotification = async (seconds, isBreak = false) => {
   // Cancel any existing timer notification
   await cancelTimerNotification();
 
-  // Use absolute date trigger instead of timeInterval for reliability
-  // when the app is in background or screen is locked
-  const fireDate = new Date(Date.now() + seconds * 1000);
-
   await Notifications.scheduleNotificationAsync({
     content: {
       title: isBreak ? t('notifications.timerBreakTitle') : t('notifications.timerFocusTitle'),
@@ -129,8 +125,9 @@ export const scheduleTimerNotification = async (seconds, isBreak = false) => {
       sound: true,
     },
     trigger: {
-      type: 'date',
-      timestamp: fireDate.getTime(),
+      type: 'timeInterval',
+      seconds,
+      repeats: false,
     },
     identifier: NOTIFICATION_IDS.TIMER_COMPLETE,
   });

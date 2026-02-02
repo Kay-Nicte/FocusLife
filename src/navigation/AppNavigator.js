@@ -1,5 +1,6 @@
-import React from 'react';
-import { ActivityIndicator, View, Text, TouchableOpacity } from 'react-native';
+import React, { useEffect, useCallback } from 'react';
+import { ActivityIndicator, View, Text, TouchableOpacity, Image } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
@@ -137,10 +138,22 @@ export default function AppNavigator() {
   const { user, authLoading } = useAuth();
   const { colors } = useTheme();
 
+  // Hide native splash once auth is done and app is ready
+  useEffect(() => {
+    if (!authLoading) {
+      SplashScreen.hideAsync();
+    }
+  }, [authLoading]);
+
   if (authLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-        <ActivityIndicator size="large" color={colors.primary} />
+      <View style={{ flex: 1, backgroundColor: '#7C3AED' }}>
+        <Image
+          source={require('../../assets/splash.png')}
+          style={{ width: '100%', height: '100%' }}
+          resizeMode="cover"
+          onLoad={() => SplashScreen.hideAsync()}
+        />
       </View>
     );
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider } from './src/context/AppContext';
@@ -18,6 +19,9 @@ import {
   loginUser,
   logoutUser,
 } from './src/services/purchaseService';
+
+// Keep native splash visible until we're ready
+SplashScreen.preventAutoHideAsync();
 
 const fontConfig = {
   regular: {
