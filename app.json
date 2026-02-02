@@ -8,6 +8,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#7C3AED"
     },
     "androidStatusBar": {
@@ -57,7 +59,9 @@
         }
       ],
       ["expo-splash-screen", {
-        "backgroundColor": "#7C3AED"
+        "backgroundColor": "#7C3AED",
+        "image": "./assets/splash.png",
+        "resizeMode": "cover"
       }],
       "@react-native-firebase/app",
       "@react-native-google-signin/google-signin",
