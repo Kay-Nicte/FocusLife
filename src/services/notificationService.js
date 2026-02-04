@@ -34,13 +34,22 @@ export const requestNotificationPermissions = async () => {
     return false;
   }
 
-  // Android specific channel
+  // Android specific channels
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
       name: 'FocusLife',
       importance: Notifications.AndroidImportance.HIGH,
       vibrationPattern: [0, 250, 250, 250],
       lightColor: '#7C3AED',
+    });
+    // Dedicated timer channel with max importance for reliable background delivery
+    await Notifications.setNotificationChannelAsync('timer', {
+      name: 'Timer',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 400, 200, 400, 200, 400],
+      lightColor: '#7C3AED',
+      sound: 'default',
+      bypassDnd: true,
     });
   }
 
@@ -108,12 +117,15 @@ export const showTimerCompleteNotification = async (isBreak = false) => {
       title: isBreak ? t('notifications.timerBreakTitle') : t('notifications.timerFocusTitle'),
       body: isBreak ? t('notifications.timerBreakBody') : t('notifications.timerFocusBody'),
       sound: true,
+      ...(Platform.OS === 'android' && { channelId: 'timer' }),
     },
     trigger: null, // Immediate
   });
 };
 
 // Schedule timer notification (for background)
+// Uses absolute date trigger instead of timeInterval for reliable delivery
+// on Android (maps to AlarmManager.setExactAndAllowWhileIdle)
 export const scheduleTimerNotification = async (seconds, isBreak = false) => {
   // Cancel any existing timer notification
   await cancelTimerNotification();
@@ -123,11 +135,11 @@ export const scheduleTimerNotification = async (seconds, isBreak = false) => {
       title: isBreak ? t('notifications.timerBreakTitle') : t('notifications.timerFocusTitle'),
       body: isBreak ? t('notifications.timerBreakBody') : t('notifications.timerFocusBody'),
       sound: true,
+      ...(Platform.OS === 'android' && { channelId: 'timer' }),
     },
     trigger: {
-      type: 'timeInterval',
-      seconds,
-      repeats: false,
+      type: 'date',
+      timestamp: Date.now() + seconds * 1000,
     },
     identifier: NOTIFICATION_IDS.TIMER_COMPLETE,
   });
